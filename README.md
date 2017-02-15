@@ -1,8 +1,20 @@
 # Translation Bot
 
-A Slack bot to translate Japanese messages into English by using Google Cloud Translation API
+A Slack bot to translate messages between English and Japanese by using Google Cloud Translation API. 
+This bot that [takram-design-engineering/translation-bot](https://github.com/takram-design-engineering/translation-bot) based.
+
+It translate into English if you post Japanese messages.
+You can also include emoji.
 
 ![Screenshot](https://i.gyazo.com/6af2609ced8b1788deb75ef4f5d5c088.png)
+
+It translate into Japanese if you post English messages.
+
+<img src="https://github.com//masaki-ohsumi/translation-bot/blob/master/.doc/image1.png?raw=true" width="548">
+
+If you want not to translate messages, Add exclamation top of messages.
+
+<img src="https://github.com//masaki-ohsumi/translation-bot/blob/master/.doc/image2.png?raw=true" width="548">
 
 ## Requirements
 
