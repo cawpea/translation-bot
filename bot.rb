@@ -12,7 +12,12 @@ end
 
 class Translator
   def self.translate(text, language_type)
-    Translator.new(text).translate(language_type)
+    is_not_translate = text.match(/^[!]/)
+    if is_not_translate 
+      return nil
+    else
+      Translator.new(text).translate(language_type)
+    end
   end
 
   def initialize(text)
@@ -118,9 +123,13 @@ class TranslationBot < SlackRubyBot::Bot
   def self.receive_message(client, data, match, language_type)
     username = Slack::Web::Client.new.users_info(user: data.user)[:user][:name]
     if data['subtype'] && data['subtype'] == 'file_share'
-      reply(client, data, username, translate_uploaded_message(data, language_type))
+      reply_text = translate_uploaded_message(data, language_type)
     else
-      reply(client, data, username, Translator.translate(data.text, language_type))
+      reply_text = Translator.translate(data.text, language_type)
+    end
+
+    if reply_text
+      reply(client, data, username, reply_text)
     end
   end
 
